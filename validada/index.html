@@ -142,7 +142,8 @@
                     <div class="offer-card" title="Pack Teclado + Ratón Gamer">
                         <div class="discount-badge">-20%</div>
                         <h3>Pack Teclado + Ratón Gamer</h3>
-                        <p>Combo mecánico RGB con switches de alta precisión.</p>
+                        <!-- CORRECCIÓN AAA: Añadida etiqueta <abbr> para RGB (Check 98) -->
+                        <p>Combo mecánico <abbr title="Red Green Blue">RGB</abbr> con switches de alta precisión.</p>
                         <img src="archivos/teclado.png" alt="">
                         <a href="#" class="fake-button-offer">Ver oferta</a>
                     </div>
@@ -160,9 +161,11 @@
                         <h3>Monitor Curvo 27"</h3>
                         <p>Inmersión total para tus juegos y trabajo.</p>
                         <!-- CORRECCIÓN: title movido al enlace <a> que envuelve la imagen -->
-                        <a href="#" class="offer-image-link" aria-label="Más información sobre el monitor curvo" title="Monitor Curvo 27&quot;">
+                        <!-- CORRECCIÓN: Se elimina aria-label del enlace <a> -->
+                        <a href="#" class="offer-image-link" title="Monitor Curvo 27&quot;">
                             <!-- CORRECCIÓN: Estructura HTML reparada. img dentro de a -->
-                            <img src="archivos/monitor.png" alt="">
+                            <!-- CORRECCIÓN: Se añade el texto alternativo a la <img> para satisfacer el Check 7 -->
+                            <img src="archivos/monitor.png" alt="Más información sobre el monitor curvo">
                         </a>
                     </div>
 
