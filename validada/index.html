@@ -8,14 +8,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="estilos.css">
+
+    <!-- CORRECCIÓN: Estilos para el enlace "Saltar al contenido" (Check 28) -->
+    <style>
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            z-index: 1000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            width: auto;
+            height: auto;
+            overflow: visible;
+        }
+    </style>
 </head>
 <body>
+    <!-- CORRECCIÓN: Enlace "Saltar al contenido" (Check 28) -->
+    <a class="skip-link" href="#app-container">Saltar al contenido principal</a>
 
     <header>
         <!-- CORRECCIÓN: span -> strong -->
         <a href="#inicio" class="logo"><strong class="fas fa-bolt"></strong> TiendaTec</a>
         
-        <nav class="broken-nav">
+        <!-- CORRECCIÓN: Añadido role="navigation" explícito (Check 262) -->
+        <nav class="broken-nav" role="navigation">
             <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
             <a href="#inicio" aria-label="Inicio"><strong class="fas fa-home"></strong></a>
             
@@ -96,7 +124,8 @@
                     <div class="product-card" title="SSD Externo 2TB UltraVeloz">
                         <img src="archivos/disco_duro.png" alt="">
                         <div class="product-info">
-                            <h3>SSD Externo 2TB UltraVeloz</h3>
+                            <!-- CORRECCIÓN: Añadida etiqueta <abbr> para SSD (Check 98) -->
+                            <h3><abbr title="Solid State Drive">SSD</abbr> Externo 2TB UltraVeloz</h3>
                             <p class="low-contrast-text">Oferta limitada</p>
                             <div class="product-price">189.90 €</div>
                             <div class="fake-button">Añadir al carrito</div>
