@@ -34,30 +34,6 @@
             height: auto;
             overflow: visible;
         }
-
-        /* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
-        /* Esto hace que el <ul> y el <li> "desaparezcan" del layout, */
-        /* dejando que los <a> se comporten como lo hacían antes */
-        .accessible-nav-list,
-        .accessible-nav-list > li {
-            display: contents;
-        }
-
-        .header-icons-list,
-        .header-icons-list > li {
-            display: contents;
-        }
-
-        /* Para el submenú, SÍ necesitamos que <ul> y <li> sean contenedores */
-        .dropdown-menu {
-            list-style-type: none; /* Quita viñetas */
-            padding: 0;
-            margin: 0;
-        }
-
-        .dropdown-container {
-            position: relative; 
-        }
     </style>
 </head>
 <body>
@@ -241,7 +217,7 @@
 
     <footer>
         <div class="footer-info">
-            <p>&copy; 2024 TiendaTec. Todos los derechos reservados.</p>
+            <p>&copy; 2Data TiendaTec. Todos los derechos reservados.</p>
         </div>
     </footer>
 
