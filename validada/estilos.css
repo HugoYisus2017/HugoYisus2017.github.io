@@ -68,12 +68,11 @@ nav.broken-nav a:hover {
 }
 
 .dropdown-menu {
-    /* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
-    /* Resetea los estilos de lista para el <ul> */
-    list-style-type: none; /* Quita viñetas */
-    padding: 0;            /* Quita el padding-left por defecto */
-    /* --- Fin de la corrección --- */
-
+    /* CORRECCIÓN: Resetea estilos de lista del <ul> */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
     display: none;
     position: absolute;
     background-color: var(--color-claro);
@@ -116,13 +115,26 @@ nav.broken-nav a:hover {
     color: var(--color-texto);
 }
 
-/* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
-/* Hacen que <ul> y <li> no afecten al layout flex de sus padres */
-.accessible-nav-list,
-.accessible-nav-list > li {
+/* --- CORRECCIÓN CSS para Checks 262 y 248 (Versión 2 - Arregla submenú) --- */
+
+/* El <ul> principal sigue sin afectar al layout */
+.accessible-nav-list {
     display: contents;
 }
 
+/* * APLICA display:contents A TODOS LOS <li>
+ * EXCEPTO al que es nuestro contenedor de submenú.
+*/
+.accessible-nav-list > li:not(.dropdown-container) {
+    display: contents;
+}
+
+/* El li.dropdown-container ahora mantendrá sus estilos 
+   originales (.position: relative; .display: inline-block;) 
+   y el :hover volverá a funcionar. */
+
+
+/* Los iconos del header siguen igual */
 .header-icons-list,
 .header-icons-list > li {
     display: contents;
