@@ -68,6 +68,12 @@ nav.broken-nav a:hover {
 }
 
 .dropdown-menu {
+    /* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
+    /* Resetea los estilos de lista para el <ul> */
+    list-style-type: none; /* Quita viñetas */
+    padding: 0;            /* Quita el padding-left por defecto */
+    /* --- Fin de la corrección --- */
+
     display: none;
     position: absolute;
     background-color: var(--color-claro);
@@ -109,6 +115,20 @@ nav.broken-nav a:hover {
 .header-icons a {
     color: var(--color-texto);
 }
+
+/* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
+/* Hacen que <ul> y <li> no afecten al layout flex de sus padres */
+.accessible-nav-list,
+.accessible-nav-list > li {
+    display: contents;
+}
+
+.header-icons-list,
+.header-icons-list > li {
+    display: contents;
+}
+/* --- Fin de la corrección --- */
+
 
 main section { display: none; }
 main section#inicio { display: block; }
