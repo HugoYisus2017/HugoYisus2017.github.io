@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiendaTec</title>
+    
+    <!-- CORRECCIÓN: Check 54 - Título más descriptivo -->
+    <title>TiendaTec - Tu Tienda de Tecnología</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -32,6 +34,30 @@
             height: auto;
             overflow: visible;
         }
+
+        /* --- CORRECCIÓN CSS para Checks 262 y 248 --- */
+        /* Esto hace que el <ul> y el <li> "desaparezcan" del layout, */
+        /* dejando que los <a> se comporten como lo hacían antes */
+        .accessible-nav-list,
+        .accessible-nav-list > li {
+            display: contents;
+        }
+
+        .header-icons-list,
+        .header-icons-list > li {
+            display: contents;
+        }
+
+        /* Para el submenú, SÍ necesitamos que <ul> y <li> sean contenedores */
+        .dropdown-menu {
+            list-style-type: none; /* Quita viñetas */
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-container {
+            position: relative; 
+        }
     </style>
 </head>
 <body>
@@ -42,33 +68,57 @@
         <!-- CORRECCIÓN: span -> strong -->
         <a href="#inicio" class="logo"><strong class="fas fa-bolt"></strong> TiendaTec</a>
         
+        <!-- 
+            CORRECCIÓN: Checks 262 y 248
+            Se reestructura la navegación para usar una lista <ul>
+        -->
         <!-- CORRECCIÓN: Añadido role="navigation" explícito (Check 262) -->
         <nav class="broken-nav" role="navigation">
-            <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-            <a href="#inicio" aria-label="Inicio"><strong class="fas fa-home"></strong></a>
-            
-            <div class="dropdown-container">
-                <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-                <a href="#tienda" aria-label="Tienda"><strong class="fas fa-store"></strong></a>
+            <ul class="accessible-nav-list">
+                <li>
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#inicio" aria-label="Inicio"><strong class="fas fa-home"></strong></a>
+                </li>
                 
-                <div class="dropdown-menu">
-                    <a href="#">Electrónica</a>
-                    <a href="#">Hogar y Cocina</a>
-                    <a href="#">Libros</a>
-                    <a href="#">Gaming</a>
-                </div>
-            </div>
-            <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-            <a href="#mapa" aria-label="Encuéntranos"><strong class="fas fa-map-location-dot"></strong></a>
-            <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-            <a href="#pagos" aria-label="Métodos de Pago"><strong class="fas fa-credit-card"></strong></a>
+                <li class="dropdown-container">
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#tienda" aria-label="Tienda"><strong class="fas fa-store"></strong></a>
+                    
+                    <!-- El submenú TAMBIÉN es una lista -->
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Electrónica</a></li>
+                        <li><a href="#">Hogar y Cocina</a></li>
+                        <li><a href="#">Libros</a></li>
+                        <li><a href="#">Gaming</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#mapa" aria-label="Encuéntranos"><strong class="fas fa-map-location-dot"></strong></a>
+                </li>
+                <li>
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#pagos" aria-label="Métodos de Pago"><strong class="fas fa-credit-card"></strong></a>
+                </li>
+            </ul>
         </nav>
         
+        <!-- 
+            CORRECCIÓN: Checks 262 y 248
+            Los iconos de la cabecera también son una lista de acciones.
+        -->
         <div class="header-icons">
-            <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-            <a href="#" aria-label="Buscar"><strong class="fas fa-search"></strong></a>
-            <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
-            <a href="#carrito" aria-label="Carrito de compras"><strong class="fas fa-shopping-cart"></strong></a>
+            <ul class="header-icons-list">
+                <li>
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#" aria-label="Buscar"><strong class="fas fa-search"></strong></a>
+                </li>
+                <li>
+                    <!-- CORRECCIÓN: span -> strong (mantenemos aria-label) -->
+                    <a href="#carrito" aria-label="Carrito de compras"><strong class="fas fa-shopping-cart"></strong></a>
+                </li>
+            </ul>
         </div>
     </header>
 
@@ -89,7 +139,8 @@
                     
                     <!-- CORRECCIÓN: title movido al div padre -->
                     <div class="product-card" title="Auriculares Inalámbricos X-Sonido Pro">
-                        <img src="archivos/auriculares.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/auriculares.png" alt="Auriculares inalámbricos negros X-Sonido Pro">
                         <div class="product-info">
                             <h3>Auriculares Inalámbricos X-Sonido Pro</h3>
                             <p class="low-contrast-text">Envío gratis</p>
@@ -100,7 +151,8 @@
                     
                     <!-- CORRECCIÓN: title movido al div padre -->
                     <div class="product-card" title="Robot Asistente R2">
-                        <img src="archivos/robot.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/robot.png" alt="Robot asistente R2 blanco y azul">
                         <div class="product-info">
                             <h3>Robot Asistente R2</h3>
                             <p class="low-contrast-text">¡Últimas unidades!</p>
@@ -111,7 +163,8 @@
 
                     <!-- CORRECCIÓN: title movido al div padre -->
                     <div class="product-card" title="Smartwatch Pro-Health">
-                        <img src="archivos/reloj.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/reloj.png" alt="Smartwatch Pro-Health negro con correa deportiva">
                         <div class="product-info">
                             <h3>Smartwatch Pro-Health</h3>
                             <p class="low-contrast-text">Envío gratis</p>
@@ -122,7 +175,8 @@
 
                     <!-- CORRECCIÓN: title movido al div padre -->
                     <div class="product-card" title="SSD Externo 2TB UltraVeloz">
-                        <img src="archivos/disco_duro.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/disco_duro.png" alt="Disco duro SSD externo de 2TB color plata">
                         <div class="product-info">
                             <!-- CORRECCIÓN: Añadida etiqueta <abbr> para SSD (Check 98) -->
                             <h3><abbr title="Solid State Drive">SSD</abbr> Externo 2TB UltraVeloz</h3>
@@ -132,7 +186,10 @@
                         </div>
                     </div>
 
-                </div> </div> <div class="content-wrapper">
+                </div> 
+            </div> 
+            
+            <div class="content-wrapper">
                 <!-- CORRECCIÓN: span -> strong -->
                 <h2><strong class="fas fa-fire"></strong> Ofertas Flash</h2>
 
@@ -144,7 +201,8 @@
                         <h3>Pack Teclado + Ratón Gamer</h3>
                         <!-- CORRECCIÓN AAA: Añadida etiqueta <abbr> para RGB (Check 98) -->
                         <p>Combo mecánico <abbr title="Red Green Blue">RGB</abbr> con switches de alta precisión.</p>
-                        <img src="archivos/teclado.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/teclado.png" alt="Pack de teclado y ratón gamer con luces RGB">
                         <a href="#" class="fake-button-offer">Ver oferta</a>
                     </div>
                     
@@ -153,7 +211,8 @@
                         <div class="discount-badge">-15%</div>
                         <h3>Altavoz Inteligente Mini</h3>
                         <p>Tu asistente de voz en un diseño compacto.</p>
-                        <img src="archivos/altavoz.png" alt="">
+                        <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
+                        <img src="archivos/altavoz.png" alt="Altavoz inteligente mini de color gris">
                         <a href="#" class="fake-button-offer">Ver oferta</a>
                     </div>
                     
@@ -169,7 +228,11 @@
                         </a>
                     </div>
 
-                </div> </div> </section> <section id="tienda"> <h2>Tienda Completa</h2> </section>
+                </div> 
+            </div> 
+        </section> 
+
+        <section id="tienda"> <h2>Tienda Completa</h2> </section>
         <section id="mapa"> <h2>Encuéntranos</h2> </section>
         <section id="pagos"> <h2>Métodos de Pago</h2> </section>
         <section id="carrito"> <h2>Tu Carrito</h2> </section>
