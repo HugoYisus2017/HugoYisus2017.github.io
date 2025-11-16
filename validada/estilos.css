@@ -119,7 +119,7 @@ nav.broken-nav a:hover {
 /* --- INICIO DE NUEVOS COMENTARIOS Y CORRECCIONES CSS (Checks 262 y 248) --- */
 
 /* COMENTARIO NUEVO: 
-  Para corregir la accesibilidad, cambiamos los <a> sueltos por
+  Para corregir la accesibilidad (Checks 262 y 248), cambiamos los <a> sueltos por
   una lista <ul><li><a></li></ul>.
   Para que esto no rompa el diseño (que usaba 'display: flex' en el 
   padre '.broken-nav'), usamos 'display: contents'. 
@@ -134,9 +134,9 @@ nav.broken-nav a:hover {
 
 /* COMENTARIO NUEVO:
   Aquí hacemos lo mismo para los <li>, PERO excluimos 
-  a '.dropdown-container'. Si aplicáramos 'display: contents' a 
+  a '.dropdown-container' usando :not(). Si aplicáramos 'display: contents' a 
   '.dropdown-container', perdería su 'position: relative' y el 
-  submenú se rompería.
+  submenú se rompería y no se mostraría.
 */
 .accessible-nav-list > li:not(.dropdown-container) {
     display: contents;
