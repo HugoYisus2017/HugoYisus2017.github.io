@@ -72,6 +72,7 @@ nav.broken-nav a:hover {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    /* --- Fin Corrección --- */
     
     display: none;
     position: absolute;
@@ -115,31 +116,38 @@ nav.broken-nav a:hover {
     color: var(--color-texto);
 }
 
-/* --- CORRECCIÓN CSS para Checks 262 y 248 (Versión 2 - Arregla submenú) --- */
+/* --- INICIO DE NUEVOS COMENTARIOS Y CORRECCIONES CSS (Checks 262 y 248) --- */
 
-/* El <ul> principal sigue sin afectar al layout */
+/* COMENTARIO NUEVO: 
+  Para corregir la accesibilidad, cambiamos los <a> sueltos por
+  una lista <ul><li><a></li></ul>.
+  Para que esto no rompa el diseño (que usaba 'display: flex' en el 
+  padre '.broken-nav'), usamos 'display: contents'. 
+  Esto hace que el <ul> y el <li> "desaparezcan" para el layout, 
+  y el navegador trata a los <a> como si fueran hijos directos de '.broken-nav'.
+*/
+
+/* El <ul> principal de navegación (accessible-nav-list) se "esconde" */
 .accessible-nav-list {
     display: contents;
 }
 
-/* * APLICA display:contents A TODOS LOS <li>
- * EXCEPTO al que es nuestro contenedor de submenú.
+/* COMENTARIO NUEVO:
+  Aquí hacemos lo mismo para los <li>, PERO excluimos 
+  a '.dropdown-container'. Si aplicáramos 'display: contents' a 
+  '.dropdown-container', perdería su 'position: relative' y el 
+  submenú se rompería.
 */
 .accessible-nav-list > li:not(.dropdown-container) {
     display: contents;
 }
 
-/* El li.dropdown-container ahora mantendrá sus estilos 
-   originales (.position: relative; .display: inline-block;) 
-   y el :hover volverá a funcionar. */
-
-
-/* Los iconos del header siguen igual */
+/* Los iconos del header también usan listas, así que aplicamos la misma técnica */
 .header-icons-list,
 .header-icons-list > li {
     display: contents;
 }
-/* --- Fin de la corrección --- */
+/* --- FIN DE NUEVOS COMENTARIOS Y CORRECCIONES CSS --- */
 
 
 main section { display: none; }
