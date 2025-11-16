@@ -116,38 +116,35 @@ nav.broken-nav a:hover {
     color: var(--color-texto);
 }
 
-/* --- INICIO DE NUEVOS COMENTARIOS Y CORRECCIONES CSS (Checks 262 y 248) --- */
+/* --- INICIO DE CORRECCIONES CSS (Checks 262, 248, 43, 44) --- */
 
-/* COMENTARIO NUEVO: 
-  Para corregir la accesibilidad (Checks 262 y 248), cambiamos los <a> sueltos por
-  una lista <ul><li><a></li></ul>.
-  Para que esto no rompa el diseño (que usaba 'display: flex' en el 
-  padre '.broken-nav'), usamos 'display: contents'. 
-  Esto hace que el <ul> y el <li> "desaparezcan" para el layout, 
-  y el navegador trata a los <a> como si fueran hijos directos de '.broken-nav'.
-*/
-
-/* El <ul> principal de navegación (accessible-nav-list) se "esconde" */
+/* COMENTARIO: Para que <ul> y <li> no rompan el layout de flexbox */
 .accessible-nav-list {
     display: contents;
 }
 
-/* COMENTARIO NUEVO:
-  Aquí hacemos lo mismo para los <li>, PERO excluimos 
-  a '.dropdown-container' usando :not(). Si aplicáramos 'display: contents' a 
-  '.dropdown-container', perdería su 'position: relative' y el 
-  submenú se rompería y no se mostraría.
-*/
+/* COMENTARIO: Excluimos .dropdown-container para que el :hover funcione */
 .accessible-nav-list > li:not(.dropdown-container) {
     display: contents;
 }
 
-/* Los iconos del header también usan listas, así que aplicamos la misma técnica */
+/* Los iconos del header también usan esta técnica */
 .header-icons-list,
 .header-icons-list > li {
     display: contents;
 }
-/* --- FIN DE NUEVOS COMENTARIOS Y CORRECCIONES CSS --- */
+
+/* COMENTARIO: Estilo para el H1 oculto */
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* --- FIN DE CORRECCIONES CSS --- */
 
 
 main section { display: none; }
@@ -167,10 +164,15 @@ main {
     border-radius: 8px;
     margin-bottom: 2rem;
 }
-.hero-banner h2 {
+
+/* CORRECCIÓN: Check 43 - Aplicamos el estilo del H2 al nuevo P */
+.hero-banner .hero-slogan {
     margin: 0 0 0.5rem 0;
     font-size: 2.2rem;
+    font-weight: bold; /* Añadido para imitar el h2 */
 }
+/* El <p> normal del hero-banner usará los estilos base de .hero-banner */
+
 
 .content-wrapper {
     background-color: var(--color-claro);
@@ -347,7 +349,7 @@ footer {
         left: -80px;
     }
 
-    .hero-banner h2 { font-size: 1.8rem; }
+    .hero-banner .hero-slogan { font-size: 1.8rem; } /* Corregido para media query */
     .hero-banner { padding: 2rem 1rem; }
     .content-wrapper { padding: 1rem; }
     .product-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
