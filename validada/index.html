@@ -34,6 +34,16 @@
             height: auto;
             overflow: visible;
         }
+
+        /* CORRECCIÓN: Check 43/44 - Estilo para H1 oculto */
+        .visually-hidden {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -99,16 +109,21 @@
     </header>
 
     <main id="app-container">
+        
+        <!-- CORRECCIÓN: Check 43/44 - Añadido H1 oculto para estructura -->
+        <h1 class="visually-hidden">TiendaTec - Tu Tienda de Tecnología</h1>
 
         <section id="inicio">
 
             <div class="hero-banner">
-                <h2>La Tecnología que Mueve tu Mundo</h2>
+                <!-- CORRECCIÓN: Check 43 - Convertido H2 de formato a P de contenido -->
+                <p class="hero-slogan">La Tecnología que Mueve tu Mundo</p>
                 <p>Descubre las mejores ofertas en gadgets y componentes.</p>
             </div>
 
             <div class="content-wrapper">
                 <!-- CORRECCIÓN: span -> strong -->
+                <!-- Este H2 es estructuralmente correcto -->
                 <h2><strong class="fas fa-star"></strong> Productos Destacados</h2>
                 
                 <div class="product-grid">
@@ -118,6 +133,7 @@
                         <!-- CORRECCIÓN: Check 14 - Añadido alt descriptivo -->
                         <img src="archivos/auriculares.png" alt="Auriculares inalámbricos negros X-Sonido Pro">
                         <div class="product-info">
+                            <!-- Este H3 es estructuralmente correcto -->
                             <h3>Auriculares Inalámbricos X-Sonido Pro</h3>
                             <p class="low-contrast-text">Envío gratis</p>
                             <div class="product-price">149.99 €</div>
